@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obiri Menu</title>
+    <link rel="stylesheet" href="styles.css">
+   <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchBox = document.getElementById("search");
+            const categoryFilter = document.getElementById("category");
+            const menuSections = document.querySelectorAll(".menu-section");
+
+            function filterMenu() {
+                const searchText = searchBox.value.toLowerCase();
+                const selectedCategory = categoryFilter.value;
+                let anyMatch = false;
+
+                menuSections.forEach(section => {
+                    const sectionCategory = section.dataset.category;
+                    const items = section.querySelectorAll(".menu-item");
+                    let sectionHasMatch = false;
+
+                    // Show or hide each menu section based on category
+                    if (selectedCategory === "all" || sectionCategory === selectedCategory) {
+                        section.style.display = "block";
+                    } else {
+                        section.style.display = "none";
+                    }
+
+                    items.forEach(item => {
+                        const itemName = item.querySelector("h3").innerText.toLowerCase();
+                        const matchesSearch = itemName.includes(searchText);
+                        const matchesCategory = selectedCategory === "all" || sectionCategory === selectedCategory;
+
+                        if (matchesCategory && (searchText === "" || matchesSearch)) {
+                            item.style.display = "flex";
+                            sectionHasMatch = true;
+                            anyMatch = true;
+                        } else {
+                            item.style.display = "none";
+                        }
+                    });
+
+                    // Hide section if it has no visible items
+                    section.style.display = sectionHasMatch ? "block" : "none";
+                });
+
+                // If no match is found, hide everything
+                if (!anyMatch) {
+                    menuSections.forEach(section => section.style.display = "none");
+                }
+            }
+
+            searchBox.addEventListener("input", filterMenu);
+            categoryFilter.addEventListener("change", filterMenu);
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <img src="obirilogo.jpg" alt="Obiri Logo" class="logo">
+        <h1>Obiri Restaurant and Lounge</h1>
+        <p>📍 111 Woji Road, New GRA, Port Harcourt</p>
+        <p>Tel:📞 09013577392 |📷 <a href ="https://www.instagram.com/obiri_restaurant_lounge?igsh=MTRoZmlvbzZxenhzdg==">Instagram</a></p>
+    </header>
+
+    <div class="container">
+        <label for="category">Category</label>
+        <select id="category">
+            <option value="all">All</option>
+            <option value="OBIRI-SIGNATURE">Obiri Signature</option>
+            <option value="BARBEQUE & CROAKER">Barbeque & Croaker</option>
+            <option value="standalone">Standalone</option>
+            <option value="arusi">Arusi (Rice Dishes)</option>
+            <option value="mini-wiri">Mini-Wiri (Soup)</option>
+            <option value="otara">Otara (Swallow)</option>
+            <option value="anu-gworogwu">Anu-Gworogwu (Pepper-Dem)</option>
+            <option value="mini-wiri-gorogoro">Mini-Wiri-Gorogoro (Pepper Soup)</option>
+            <option value="sides">Sides</option>
+            <option value="protein">Proteins</option>
+            <option value="beer">Beer</option>
+            <option value="softs & water">Softs & Water</option>
+            <option value="gin">Gin</option>
+            <option value="energy drinks">Energy Drinks</option>
+            <option value="wines">Wines</option>
+            <option value="whiskey">Whiskey</option>
+            <option value="champagnes">Champagnes</option>
+            <option value="cream-liqueur">Cream Liqueur</option>
+            <option value="brandy">Brandy</option>
+            <option value="liqueur">Liqueur</option>
+            <option value="cocktails">Cocktails</option>
+            <option value="mocktails">Mocktails</option>
+            <option value="smoothies">Smoothies</option>
+            <option value="fresh juice">Fresh Juice</option>
+            <option value="shakes">Shakes</option>
+            <option value="shisha">Shisha</option>
+        </select>
+
+        <input type="text" id="search" placeholder="Search for an item..." class="search-box">
+
+
+        <section class="menu-section"   data-category="OBIRI-SIGNATURE">
+            <h2>OBIRI SIGNATURE</h2>
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="soup.jpg" alt="Ikwerre Native Soup">
+                <div>
+                    <h3>Ikwerre Native Soup & Okazi</h3>
+                    <p class="price">₦25,000</p>
+                    <p>Served with either GOAT-MEAT, BUSH-MEAT, DRIED BEEF</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="palmwine.png" alt="Palm Wine">
+                <div>
+                    <h3>Palm Wine</h3>
+                    <p class="price">₦3000</p>
+                    <p>1 Keg of Palm Wine</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="seafoodO.jpg" alt="Soup">
+                <div>
+                    <h3>Seafood Okro with Redsnapper</h3>
+                    <p class="price">₦30,000</p>
+                    <p>Head,Fresh/Drilled</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="seafoodO.jpg" alt="Soup">
+                <div>
+                    <h3>Seafood Okro with Redsnapper  </h3>
+                    <p class="price">₦25,000</p>
+                    <p>Middle/Tail </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="fishermanS.jpeg" alt="Soup">
+                <div>
+                    <h3>Fisherman Soup with Redsnapper Head</h3>
+                    <p class="price">₦30,000</p>
+                    <p>Red anapper head, Ngolo, Periwinkle, shrimps, crabs, tiger prawns </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="OBIRI-SIGNATURE">
+                <img src="fishermanS.jpeg" alt="Soup">
+                <div>
+                    <h3>Fisherman Soup with Redsnapper</h3>
+                    <p class="price">₦25,000</p>
+                    <p>Middle Tail </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="menu-section"   data-category="BARBEQUE & CROAKER">
+            <h2>BARBEQUE & CROAKER</h2>
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="bbq2.jpeg" alt="BBQ">
+                <div>
+                    <h3>BBQ CROAKER FISH </h3>
+                    <p class="price">₦15,000</p>
+                    <p>A Portion of Marinated fish with lemon and hot spice, served wiith cole slaw and fries</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="bbq2.jpeg" alt="BBQ">
+                <div>
+                    <h3>BBQ CROAKER FISH </h3>
+                    <p class="price">₦20,000</p>
+                    <p>A Portion of Marinated fish with lemon and hot spice, served wiith cole slaw and fries</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="bbq2.jpeg" alt="BBQ">
+                <div>
+                    <h3>BBQ CROAKER FISH </h3>
+                    <p class="price">₦25,000</p>
+                    <p>A Plate of Marinated fish with lemon and hot spice, served wiith cole slaw and fries</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="bbq2.jpeg" alt="BBQ">
+                <div>
+                    <h3>BBQ CROAKER FISH </h3>
+                    <p class="price">₦30,000</p>
+                    <p>A Plate of Marinated fish with lemon and hot spice, served wiith cole slaw and fries</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="grilledcat.jpg" alt="BBQ">
+                <div>
+                    <h3>GRILLED CATFISH</h3>
+                    <p class="price">₦20,000</p>
+                    <p>Marinated catfish with hot spice, charcoal grilled, served with cole slaw and fries </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="grilledturkey.jpg" alt="BBQ">
+                <div>
+                    <h3>GRILLED TURKEY </h3>
+                    <p class="price">₦12,000</p>
+                    <p>Grilled Turkey </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="BARBEQUE & CROAKER">
+                <img src="tilapia.jpg" alt="BBQ">
+                <div>
+                    <h3>GRILLED TILAPIA FISH </h3>
+                    <p class="price">₦12,500</p>
+                    <p>Grilled Tilapia Fish</p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="menu-section"   data-category="standalone">
+            <h2>STANDALONE</h2>
+            <div class="menu-item"  data-category="standalone">
+                <img src="potatoC.jpeg" alt="Nkwobi">
+                <div>
+                    <h3>Potato Chips</h3>
+                    <p class="price">₦3,000</p>
+                    <p>Fries . sauce </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="isi-ewu.jpg" alt="Isi-Ewu">
+                <div>
+                    <h3>Isi-Ewu</h3>
+                    <p class="price">₦12,000</p>
+                    <p>Diced Goat-Head in Sauce, Vegetables & Onions</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="nkwobi.jpg" alt="Nkwobi">
+                <div>
+                    <h3>Nkwobi</h3>
+                    <p class="price">₦10,000</p>
+                    <p>Diced Cow leg. Leaves of Utazi. ngwo. Ugba . Peppers Scotch Bonnet. Slice Onions . </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="goatMN.jpeg" alt="Nkwobi">
+                <div>
+                    <h3>Goatmeat Nkwobi</h3>
+                    <p class="price">₦10,000</p>
+                    <p>Diced Goat meat. Leaves of Utazi. ngwo. Ugba . Peppers Scotch Bonnet. Slice Onions . </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="ugba.jpeg" alt="Ugba">
+                <div>
+                    <h3>Ugba </h3>
+                    <p class="price">₦5,000</p>
+                    <p>Pieces Garden Egg. Ugba . Dry Black Pepper </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="ugba.jpeg" alt="Ugba">
+                <div>
+                    <h3>Ugba & Fried Fish</h3>
+                    <p class="price">₦8,000</p>
+                    <p>Pieces Garden Egg. Ugba . Fried-Fish . Dry Black Pepper </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="ugba.jpeg" alt="Ugba & Stock-Fish">
+                <div>
+                    <h3>Ugba & Stock-Fish</h3>
+                    <p class="price">₦9,500</p>
+                    <p>Pieces Garden Egg. Ugba . Stockfish . Dry Black Pepper </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="abacha.webp" alt="Abacha">
+                <div>
+                    <h3>Abacha</h3>
+                    <p class="price">₦6,000</p>
+                    <p>Soaked Dried Abacha . Palm Oil . Onion and Scotch Bonnet . Ngwo Water . Ehuru Powder . Crayfish Powder .  Ugba </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="abacha.webp" alt="Abacha">
+                <div>
+                    <h3>Abacha & Fried Fish</h3>
+                    <p class="price">₦9,000</p>
+                    <p>Soaked Dried Abacha . Palm Oil . Onion and Scotch Bonnet . Ngwo Water . Ehuru Powder . Crayfish Powder . Fried Fish. Ugba </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="abacha.webp" alt="Abacha">
+                <div>
+                    <h3>Abacha & Kpomo</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Soaked Dried Abacha . Palm Oil . Onion and Scotch Bonnet . Ngwo Water . Ehuru Powder . Crayfish Powder . Cooked Kpomo. Ugba </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="abacha.webp" alt="Abacha">
+                <div>
+                    <h3>Abacha & Stockfish</h3>
+                    <p class="price">₦10,500</p>
+                    <p>Soaked Dried Abacha . Palm Oil . Onion and Scotch Bonnet . Ngwo Water . Ehuru Powder . Crayfish Powder . Stock-Fish . Ugba </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="piom.jpg" alt="Matching-Ground & Piom-Piom">
+                <div>
+                    <h3>Matching-Ground & Piom-Piom</h3>
+                    <p class="price">₦6240</p>
+                    <p>Goat-Foot, Perewinkle, Palmoil Sauce. Chopped Utazi Leave </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="porridgeY.jpeg" alt="Porridge Yam">
+                <div>
+                    <h3>Porridge Yam</h3>
+                    <p class="price">₦5,000</p>
+                    <p>Porridge Yam </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="standalone">
+                <img src="plantainporri.jpeg" alt="Porridge ">
+                <div>
+                    <h3>Plantain Porridge</h3>
+                    <p class="price">₦5,000</p>
+                    <p>Plantain Porridge </p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="arusi">
+            <h2>ARUSI (RICE DISHES)</h2>
+            <div class="menu-item"  data-category="arusi">
+                <img src="nativerice.jpg" alt="Native Rice">
+                <div>
+                    <h3>Native Rice </h3>
+                    <p class="price">₦7,000</p>
+                    <p>Served with either GOAT-MEAT, CHICKEN, ASSORTED, GIZZARD,BUSH-MEAT, FISH, COW-HEAD, or TURKEY. Rice made with Palm Oil, Vegetable. </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="arusi">
+                <img src="coconutrice.jpg" alt="Coconut Rice">
+                <div>
+                    <h3>Coconut Rice</h3>
+                    <p class="price">₦6,500</p>
+                    <p>Served with either GOAT-MEAT, CHICKEN, ASSORTED,  BUSH-MEAT, FISH, COW-HEAD or TURKEY or GIZZARD </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="arusi">
+                <img src="jolloffrice.jpg" alt="Jollof Rice">
+                <div>
+                    <h3>Jollof Rice </h3>
+                    <p class="price">₦6,000</p>
+                    <p>Served with either GOAT-MEAT, CHICKEN, ASSORTED,  BUSH-MEAT, FISH, COW-HEAD or TURKEY or GIZZARD  </p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="arusi">
+                <img src="rice.jpeg" alt="White Rice">
+                <div>
+                    <h3>White Rice</h3>
+                    <p class="price">₦2,500</p>
+                    <p>Served with either GOAT-MEAT, CHICKEN, ASSORTED,  BUSH-MEAT, FISH, COW-HEAD or TURKEY or GIZZARD </p>
+                </div>
+            </div>
+        
+        </section>  
+
+
+        <section class="menu-section"   data-category="mini-wiri">
+            <h2>MINI-WIRI (SOUP)</h2>
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="afang.jpeg" alt="Soup">
+                    <div>
+                        <h3>Afang Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="vegS.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Vegetable Sauce</h3>
+                        <p class="price">#3,000</p>
+                        <p>Served with any sides</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="stew.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Stew </h3>
+                        <p class="price">#2,000</p>
+                        <p>Served with any sides</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="banga.jpg" alt="Soup">
+                    <div>
+                        <h3>Banga Soup</h3>
+                        <p class="price">₦7,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="egusi.jpg" alt="Soup">
+                    <div>
+                        <h3>Egusi Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="edikaikong.jpeg" alt="Soup">
+                    <div>
+                        <h3>Edikaikong Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="oha.jpg" alt="Soup">
+                    <div>
+                        <h3>Oha Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="ofe.jpg" alt="Soup">
+                    <div>
+                        <h3>Ofe Onugbu Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="ofeN.jpg" alt="Soup">
+                    <div>
+                        <h3>Ofe Nsala Soup</h3>
+                        <p class="price">₦8,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="ogbono.jpg" alt="Soup">
+                    <div>
+                        <h3>Ogbono Soup</h3>
+                        <p class="price">₦6,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri">
+                    <img src="nativeS.jpeg" alt="Soup">
+                    <div>
+                        <h3>Native Soup</h3>
+                        <p class="price">₦10,000</p>
+                        <p>Soup </p>
+                    </div>
+                </div>
+
+
+        </section>  
+
+
+        <section class="menu-section"   data-category="otara">
+            <h2>OTARA (SWALLOW)</h2>
+                <div class="menu-item"  data-category="otara">
+                    <img src="eba.jpeg" alt="Swallow">
+                    <div>
+                        <h3>eba</h3>
+                        <p class="price">₦1,500</p>
+                        <p>Garri </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="semo.jpeg" alt="Swallow">
+                    <div>
+                        <h3>semo</h3>
+                        <p class="price">#1,500</p>
+                        <p> Semo</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="poundo.jpeg" alt="Swallow">
+                    <div>
+                        <h3>Poundo </h3>
+                        <p class="price">₦1,500</p>
+                        <p>poundoyam </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="wheat.png" alt="Swallow">
+                    <div>
+                        <h3>Wheat</h3>
+                        <p class="price">#2,000</p>
+                        <p> Wheat</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="oatM.jpg" alt="Swallow">
+                    <div>
+                        <h3>Oatmeal</h3>
+                        <p class="price">₦2,500</p>
+                        <p>oat </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="plantainflour.jpg" alt="Swallow">
+                    <div>
+                        <h3>Plantain Fufu</h3>
+                        <p class="price">#2,500</p>
+                        <p> Plantain Flour</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="otara">
+                    <img src="starch.webp" alt="Swallow">
+                    <div>
+                        <h3>Starch</h3>
+                        <p class="price">₦1,500</p>
+                        <p>Starch </p>
+                    </div>
+                </div>
+
+
+        </section>
+
+        <section class="menu-section"   data-category="anu-gworogwu">
+            <h2>ANU-GWOROGWU (PEPPER DEM)</h2>
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppercow.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Cow Leg</h3>
+                        <p class="price">₦8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperchicken.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Chicken</h3>
+                        <p class="price">#8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperdriedbeef.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Dried Beef</h3>
+                        <p class="price">₦8,500</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperdriedgoat.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Dried Goat Meat</h3>
+                        <p class="price">#8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppergoat.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Goat Meat</h3>
+                        <p class="price">₦8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppersnail.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Snail</h3>
+                        <p class="price">#12,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperantelope.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Antelope</h3>
+                        <p class="price">₦10,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperbeef.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Beef</h3>
+                        <p class="price">#8,500</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperbushpig.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Bush Pig</h3>
+                        <p class="price">₦10,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppercowassorted.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Cow Assorted</h3>
+                        <p class="price">#8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppercowhead.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Cow Head</h3>
+                        <p class="price">₦8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppercowtail.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Cowtail</h3>
+                        <p class="price">#8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppergoatassorted.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Goat Assorted</h3>
+                        <p class="price">₦8,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="peppergrasscutter.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Grasscutter</h3>
+                        <p class="price">#10,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperstockfish.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Stockfish</h3>
+                        <p class="price">₦5,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="anu-gworogwu">
+                    <img src="pepperturkey.jpeg" alt="pepper">
+                    <div>
+                        <h3>Peppered Turkey</h3>
+                        <p class="price">#10,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="mini-wiri-gorogoro">
+            <h2>MINI-WIRI-GOROGORO (PEPPER SOUP)</h2>
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="antelopepeppersoup.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Antelope Pepper Soup</h3>
+                        <p class="price">₦11,000</p>
+                        <p>A Plate of Antelope Pepper Soup, SIDES: YAM, PLANTAIN, RICE or AGIDI</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="beefpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Beef Pepper Soup</h3>
+                        <p class="price">#10,000</p>
+                        <p>A Plate of Beef Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="catfishpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Cat-Fish Pepper Soup</h3>
+                        <p class="price">#8,000</p>
+                        <p>A Plate of Cat-Fish Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="chickenpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Chicken Pepper Soup</h3>
+                        <p class="price">#8,000</p>
+                        <p>A Plate of Chicken Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="cowheadpepper.jpg" alt="Pepper Soup">
+                    <div>
+                        <h3>Cow-Head Pepper Soup</h3>
+                        <p class="price">#10,000</p>
+                        <p>A Plate of Cow Head Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="cowlegpepper.jpg" alt="Pepper Soup">
+                    <div>
+                        <h3>Cow-Leg Pepper Soup</h3>
+                        <p class="price">#1040</p>
+                        <p>A Plate of Cow-leg Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="cowtailpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Cow-Tail Pepper Soup</h3>
+                        <p class="price">#10,000</p>
+                        <p>A Plate of Cowtail Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="fullcatfishpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Full Catfish Peppersoup</h3>
+                        <p class="price">#25,000</p>
+                        <p> Full Catfish Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="goatassortedpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Goat Assorted Pepper Soup</h3>
+                        <p class="price">#10,000</p>
+                        <p>A Plate of Goat Assorted Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="goatmeatpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Goat-Meat Pepper Soup</h3>
+                        <p class="price">#8,000</p>
+                        <p>A Plate of Goat-Meat Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="grasscutterpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Grasscutter Peppersoup</h3>
+                        <p class="price">#11,000</p>
+                        <p>A Plate of Grasscutter Peppersoup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="wholechcikenpepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Whole Chicken Peppersoup</h3>
+                        <p class="price">#15,600</p>
+                        <p> Whole Chicken Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="mini-wiri-gorogoro">
+                    <img src="yampepper.jpeg" alt="Pepper Soup">
+                    <div>
+                        <h3>Yam Peppersoup</h3>
+                        <p class="price">#5,200</p>
+                        <p>A Plate of Yam Peppersoup</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="protein">
+            <h2>PROTEIN</h2>
+                <div class="menu-item"  data-category="protein">
+                    <img src="antelope.jpeg" alt="Meat">
+                    <div>
+                        <h3>Antelope Meat</h3>
+                        <p class="price">₦7,500</p>
+                        <p>  </p>
+                    </div>
+                </div>
+
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="kpomo.jpeg" alt="protein">
+                    <div>
+                        <h3>Kpomo</h3>
+                        <p class="price">₦2,500</p>
+                        <p>  </p>
+                    </div>
+                </div>
+                
+                <div class="menu-item"  data-category="protein">
+                    <img src="beef.jpeg" alt="protein">
+                    <div>
+                        <h3>Beef</h3>
+                        <p class="price">₦6,500</p>
+                        <p>  </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="bushpig.jpeg" alt="protein">
+                    <div>
+                        <h3>Bush Pig</h3>
+                        <p class="price">#7,500</p>
+                        <p>  </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="catfish.jpeg" alt="protein">
+                    <div>
+                        <h3>Cat Fish</h3>
+                        <p class="price">#7,000</p>
+                        <p>  </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="chicken.jpeg" alt="protein">
+                    <div>
+                        <h3>Chicken</h3>
+                        <p class="price">₦7,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="cow.jpeg" alt="protein">
+                    <div>
+                        <h3>Cow Assorted</h3>
+                        <p class="price">#6,500</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="driedbeef.jpeg" alt="protein">
+                    <div>
+                        <h3>Dried Beef</h3>
+                        <p class="price">#7,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="driedcat.jpeg" alt="protein">
+                    <div>
+                        <h3>Dried Cat Fish</h3>
+                        <p class="price">₦6,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="fryfish.jpeg" alt="protein">
+                    <div>
+                        <h3>Fry Fish</h3>
+                        <p class="price">#3,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="goatassorted.jpeg" alt="protein">
+                    <div>
+                        <h3>Goat Assorted</h3>
+                        <p class="price">#6,500</p>
+                        <p>Assorted goat meat</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="goatmeat.jpeg" alt="protein">
+                    <div>
+                        <h3>Goat Meat</h3>
+                        <p class="price">₦7,000</p>
+                        <p>Goat meat</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="grasscutterme.jpeg" alt="protein">
+                    <div>
+                        <h3>Grasscutter Meat</h3>
+                        <p class="price">₦7,500</p>
+                        <p>Grasscutter Meat</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="protein">
+                    <img src="snail.jpeg" alt="pepper">
+                    <div>
+                        <h3>Snail</h3>
+                        <p class="price">₦10,000</p>
+                        <p>Snail </p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="sides">
+            <h2>SIDES</h2>
+                <div class="menu-item"  data-category="sides">
+                    <img src="agidi.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Agidi</h3>
+                        <p class="price">₦1,000</p>
+                        <p>Served with any of the Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="friedP.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Fried Plantain</h3>
+                        <p class="price">#500</p>
+                        <p>Served with any of the Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="plantain.jpg" alt="SIDES">
+                    <div>
+                        <h3>Sides:  Plantain</h3>
+                        <p class="price">#3,00</p>
+                        <p>Served with any of the Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="yam.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Yam</h3>
+                        <p class="price">₦3,000</p>
+                        <p>Served with any of the Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="rice.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Rice</h3>
+                        <p class="price">#2,500</p>
+                        <p>Served with any of the Pepper Soup</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="vegS.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Vegetable Sauce</h3>
+                        <p class="price">#3,000</p>
+                        <p>Served with any sides</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="stew.jpeg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Stew </h3>
+                        <p class="price">#2,000</p>
+                        <p>Served with any sides</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="sides">
+                    <img src="grilledturkey.jpg" alt="SIDES">
+                    <div>
+                        <h3>Sides: Turkey </h3>
+                        <p class="price">#8,000</p>
+                        <p>Served with any as sides</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+
+        <section class="menu-section"   data-category="beer">
+            <h2>BEER</h2>
+                <div class="menu-item"  data-category="beer">
+                    <img src="33export.jpeg" alt="BEER">
+                    <div>
+                        <h3>33 Export</h3>
+                        <p class="price">₦2,500</p>
+                        <p>Beer</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="budweiser.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Budweiser</h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="castle.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>CASTLE LITE</h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="guiness.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Guiness Extra Smooth </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="gulder.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Gulder</h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item"  data-category="beer">
+                    <img src="heineken.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Heineken </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="hero.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Hero</h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="legend.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Legend </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="life.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Life </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="originbeer.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Origin </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="star.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Star </h3>
+                        <p class="price">₦2,500</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="starradler.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Star Radlar</h3>
+                        <p class="price">₦2,000</p>
+                        <p>BEER</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="stout.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Stout [large] </h3>
+                        <p class="price">₦2,500</p>
+                        <p>Stout</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="stout.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Stout [medium]</h3>
+                        <p class="price">₦2,500</p>
+                        <p>Stout</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="smallstout.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Stout [small]</h3>
+                        <p class="price">₦2,500</p>
+                        <p>stout</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="tiger.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Tiger</h3>
+                        <p class="price">₦2,500</p>
+                        <p>Beer</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="beer">
+                    <img src="trophybeer.jpeg" alt=" BEER">
+                    <div>
+                        <h3>Trophy </h3>
+                        <p class="price">₦2,500</p>
+                        <p>Beer</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="beer">
+                    <img src="trophystout.jpeg" alt=" BEER ">
+                    <div>
+                        <h3>Trophy Stout</h3>
+                        <p class="price">₦2,500</p>
+                        <p>Stout</p>
+                    </div>
+                </div>
+        </section>
+
+
+        <section class="menu-section"   data-category="softs & water">
+            <h2>SOFTS & WATER</h2>
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="chivita.jpeg" alt="SOFTS">
+                    <div>
+                        <h3>Chivita</h3>
+                        <p class="price">₦3,000</p>
+                        <p>Chivita </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="fayrouz.png" alt="SOFTS">
+                    <div>
+                        <h3>Fayrouz</h3>
+                        <p class="price">#1,040</p>
+                        <p>Fayrouz</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="guinessmalt.jpeg" alt="SOFTS">
+                    <div>
+                        <h3>Guiness Malt</h3>
+                        <p class="price">₦1,040</p>
+                        <p>Chivita </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="hollandia.jpeg" alt="SOFTS">
+                    <div>
+                        <h3>Hollandia</h3>
+                        <p class="price">#3,000</p>
+                        <p> Hollandia Yoghurt</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="schweppes.jpeg" alt="SOFTS">
+                    <div>
+                        <h3>Schweppes</h3>
+                        <p class="price">#1,040</p>
+                        <p> Schweppes</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="softs & water">
+                    <img src="water.jpeg" alt="SOFTS">
+                    <div>
+                        <h3>Water</h3>
+                        <p class="price">#600</p>
+                        <p>Water</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="gin">
+            <h2>GIN</h2>
+                <div class="menu-item"  data-category="gin">
+                    <img src="bombay.jpeg" alt="Gin">
+                    <div>
+                        <h3>Bombay</h3>
+                        <p class="price">₦8320</p>
+                        <p>Gin </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="gin">
+                    <img src="gordon.jpeg" alt="Gin">
+                    <div>
+                        <h3>Gordon's [Big]</h3>
+                        <p class="price">#25,000</p>
+                        <p> Big bottle of Gordon's</p>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item"  data-category="gin">
+                    <img src="gordon.jpeg" alt="Gin">
+                    <div>
+                        <h3>Gordon's [Big]</h3>
+                        <p class="price">#25,000</p>
+                        <p> Big bottle of Gordon's</p>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item"  data-category="gin">
+                    <img src="gordon.jpeg" alt="Gin">
+                    <div>
+                        <h3>Gordon's [Medium]</h3>
+                        <p class="price">#13,000</p>
+                        <p> Medium bottle of Gordon's</p>
+                    </div>
+                </div>
+
+                
+                <div class="menu-item"  data-category="gin">
+                    <img src="gordonsmall.jpeg" alt="Gin">
+                    <div>
+                        <h3>Gordon's [Small]</h3>
+                        <p class="price">#5,000</p>
+                        <p> Small bottle of Gordon's</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="energy drinks">
+            <h2>ENERGY DRINKS</h2>
+                <div class="menu-item"  data-category="energy drinks">
+                    <img src="blackbullet.jpeg" alt="energy">
+                    <div>
+                        <h3>Black Bullet</h3>
+                        <p class="price">₦2,600</p>
+                        <p>A Cold Can of Black Bullet </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="energy drinks">
+                    <img src="bluebullet.jpeg" alt="energy">
+                    <div>
+                        <h3>Blue Bullet</h3>
+                        <p class="price">#3,000</p>
+                        <p>A Cold Can of Blue Bullet</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="energy drinks">
+                    <img src="redbull.jpeg" alt="energy">
+                    <div>
+                        <h3>Red Bull</h3>
+                        <p class="price">#2,600</p>
+                        <p>A Cold Can of Red Bull</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="wines">
+            <h2>WINES</h2>
+                <div class="menu-item"  data-category="wines">
+                    <img src="4thstreet.jpeg" alt="Wine">
+                    <div>
+                        <h3>4th Street Wine</h3>
+                        <p class="price">₦15,000</p>
+                        <p>Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="andre.jpg" alt="Wine">
+                    <div>
+                        <h3>Andre</h3>
+                        <p class="price">₦20,800</p>
+                        <p>Andre</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="carlo.jpeg" alt="Wine">
+                    <div>
+                        <h3>Carlo Rossi</h3>
+                        <p class="price">#20,000</p>
+                        <p> Carlo Rossi Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="drostdybig.jpeg" alt="Wine">
+                    <div>
+                        <h3>Drostdy Hof </h3>
+                        <p class="price">₦18,000</p>
+                        <p>Big size of Drostdy Hof Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="drostdymedium.jpeg" alt="Wine">
+                    <div>
+                        <h3>Drostdy Hof</h3>
+                        <p class="price">#15,600</p>
+                        <p>Medium Size of Drostdy Hof Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="drostdysmall.jpeg" alt="Wine">
+                    <div>
+                        <h3>Drostdy Hof</h3>
+                        <p class="price">#10,000</p>
+                        <p>Small Size of Drostdy Hof Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="expression.jpeg" alt="Wine">
+                    <div>
+                        <h3>Expression</h3>
+                        <p class="price">#18,000</p>
+                        <p> Expression Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="fourcousin.jpeg" alt="Wine">
+                    <div>
+                        <h3>Four Cousins</h3>
+                        <p class="price">#18,000</p>
+                        <p> Four Cousins Natural Sweet Red Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="martinelli.jpeg" alt="Wine">
+                    <div>
+                        <h3>Martinelli </h3>
+                        <p class="price">#35,000</p>
+                        <p> Martinelli's Sparkling Cidar</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="martiniR.jpeg" alt="Wine">
+                    <div>
+                        <h3>Martini Rose Sparkling Wine</h3>
+                        <p class="price">#30,000</p>
+                        <p> Martini Rose Sparkling  Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="redW.jpeg" alt="Wine">
+                    <div>
+                        <h3>Red Wine</h3>
+                        <p class="price">#15,600</p>
+                        <p> Red  Wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="wines">
+                    <img src="sweetK.jpeg" alt="Wine">
+                    <div>
+                        <h3>Sweet Kiss</h3>
+                        <p class="price">#20,000</p>
+                        <p> Sweet Kiss Wine</p>
+                    </div>
+                </div>
+
+
+        </section>
+
+
+        <section class="menu-section"   data-category="whiskey">
+            <h2>WHISKEY</h2>
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="america.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>America Honey</h3>
+                        <p class="price">₦50,000</p>
+                        <p>America Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="blacklabel.webp." alt="Whiskey">
+                    <div>
+                        <h3>JOHNNIE WALKER (BLACK LABEL)</h3>
+                        <p class="price">#70,000</p>
+                        <p> Johnnie Walker [Black Label]</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glamorich10.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Glamorich 10years</h3>
+                        <p class="price">₦80,000</p>
+                        <p>Glamorich 10years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glamorich18.webp." alt="Whiskey">
+                    <div>
+                        <h3>Glamorich 18years</h3>
+                        <p class="price">#70,000</p>
+                        <p>Glamorich 18years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glenfiddich12.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Glenfiddich 12years</h3>
+                        <p class="price">₦100,000</p>
+                        <p>Glenfiddich 12years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="gllenfiddich15.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Glenfiddich 15years</h3>
+                        <p class="price">#140,000</p>
+                        <p> Glenfiddich 15years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glenfiddich18.jpg" alt="WHISKEY">
+                    <div>
+                        <h3>Glenfiddich 18years</h3>
+                        <p class="price">₦300,000</p>
+                        <p>Glenfiddich 18years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glendfiddich21.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Glenfiddich 21years</h3>
+                        <p class="price">₦600,000</p>
+                        <p>Glenfiddich 21years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="glenmoraangie10.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Glenmorangie Original 10yrs</h3>
+                        <p class="price">#100,000</p>
+                        <p>Glenmorangie Original 10yrs Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="goldlabel.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Johnnie Walker [Gold Label]</h3>
+                        <p class="price">₦110,000</p>
+                        <p>Johnnie Walker [Gold Label]</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="jack.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Jack daniels</h3>
+                        <p class="price">#65,000</p>
+                        <p> Jack Daniels</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="jamesonblack.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Jameson Black</h3>
+                        <p class="price">₦70,000</p>
+                        <p>Jameson Black Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="jamesongreen.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Jameson Green</h3>
+                        <p class="price">#55,000</p>
+                        <p> Johnnie Walker [Black Label]</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="maccalan12.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Maccalan 12years</h3>
+                        <p class="price">₦156,000</p>
+                        <p>Maccalan 12years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="monkey.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Monkey Shoulder</h3>
+                        <p class="price">#80,000</p>
+                        <p> Monkey Shoulder</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="observatory.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>Observatory</h3>
+                        <p class="price">₦75,000</p>
+                        <p>Observatory Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="observatory20.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Observatory 20years</h3>
+                        <p class="price">#70,000</p>
+                        <p>Observatory 20years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="singleton12.jpeg" alt="Whiskey">
+                    <div>
+                        <h3>Singleton 12years</h3>
+                        <p class="price">#100,000</p>
+                        <p> Singleton 12years Whiskey</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="whiskey">
+                    <img src="william.jpeg" alt="WHISKEY">
+                    <div>
+                        <h3>William Lawson</h3>
+                        <p class="price">₦25,000</p>
+                        <p>America Whiskey</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+
+        <section class="menu-section"   data-category="champagnes">
+            <h2>CHAMPAGNES</h2>
+                <div class="menu-item"  data-category="champagnes">
+                    <img src="andre.jpg" alt="CHAMPAGNES">
+                    <div>
+                        <h3>Andre</h3>
+                        <p class="price">₦20,800</p>
+                        <p>Andre</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="champagnes">
+                    <img src="belaire.jpg" alt="CHAMPAGNES">
+                    <div>
+                        <h3>Belaire</h3>
+                        <p class="price">#130,000</p>
+                        <p> Belaire</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="champagnes">
+                    <img src="veuve.jpeg" alt="CHAMPAGNES">
+                    <div>
+                        <h3>Veuve Rich</h3>
+                        <p class="price">₦250,000</p>
+                        <p>Veuve Rich</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="cream-liqueur">
+            <h2>CREAM LIQUEUR</h2>
+                <div class="menu-item"  data-category="cream-liqueur">
+                    <img src="baileys.webp" alt="CREAM">
+                    <div>
+                        <h3>Baileys</h3>
+                        <p class="price">₦45,000</p>
+                        <p>Irish Cream Liqueur </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="cream-liqueur">
+                    <img src="aramula.jpeg" alt=" COCKTAIL">
+                    <div>
+                        <h3>Aramula</h3>
+                        <p class="price">₦40,000</p>
+                        <p>Creamy drink</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="brandy">
+            <h2>BRANDY</h2>
+                <div class="menu-item"   data-category="brandy">
+                    <img src="casamigo.jpeg" alt="BRANDY">
+                    <div>
+                        <h3>Casamigo</h3>
+                        <p class="price">₦260,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="tequila.jpeg" alt="BRANDY">
+                    <div>
+                        <h3>Tequila</h3>
+                        <p class="price">₦45,600</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="hennessyvs.jpg" alt="BRANDY">
+                    <div>
+                        <h3>Hennessy VS</h3>
+                        <p class="price">#104,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="hennessyvsop.jpg" alt="BRANDY">
+                    <div>
+                        <h3>Hennessy VSOP</h3>
+                        <p class="price">#167,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="martelblue.jpeg" alt="BRANDY">
+                    <div>
+                        <h3>Martel Blue Swift</h3>
+                        <p class="price">#140,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="martelvs.jpeg" alt="BRANDY">
+                    <div>
+                        <h3>Martel VS</h3>
+                        <p class="price">#100,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="menu-item"   data-category="brandy">
+                    <img src="remy.jpeg" alt="BRANDY">
+                    <div>
+                        <h3>Remy Martins</h3>
+                        <p class="price">#130,000</p>
+                        <p></p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section" data-category="liqueur">
+            <h2>LIQUEUR</h2>
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="palmwine.png" alt="Liqueur">
+                    <div>
+                        <h3>Palm Wine </h3>
+                        <p class="price">#4,500</p>
+                        <p>1 litre keg palm wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="tequilaS.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Tequila Shots</h3>
+                        <p class="price">#2,500</p>
+                        <p>A shot of tequila</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="1960bitters.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>1960 BITTERS</h3>
+                        <p class="price">₦3,500</p>
+                        <p>Bitters</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="campari.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Campari</h3>
+                        <p class="price">#40,000</p>
+                        <p>Italian Alcholic Liqueur</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="campariseltz.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Campari</h3>
+                        <p class="price">#40,000</p>
+                        <p>Italian Alcholic Liqueur</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="degeneral.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>De General</h3>
+                        <p class="price">#3,500</p>
+                        <p>Premium Herbal Alcholic Drink</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="desperados.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Desperados</h3>
+                        <p class="price">#2,000</p>
+                        <p>Agave Spirit Flavoured Pale Lager Beer</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="odogwu.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Odogwu Bitters</h3>
+                        <p class="price">#3,500</p>
+                        <p>Premium Herbal Alcholic Drink</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="originbig.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Origin Bitters [Big] </h3>
+                        <p class="price">#10,000</p>
+                        <p>Big Bottle Origin Bitters</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="originsmall.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Origin Bitters [Small] </h3>
+                        <p class="price">#3,500</p>
+                        <p>Small Plastic Origin Bitters </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="palmwine.png" alt="Liqueur">
+                    <div>
+                        <h3>Palm Wine </h3>
+                        <p class="price">#4,500</p>
+                        <p>1 litre keg palm wine</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="smirnoff.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Smirnoff Ice [Big] </h3>
+                        <p class="price">#2,500</p>
+                        <p>Big Bottle Smirnoff Ice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="smirnoff.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Smirnoff Ice [Small] </h3>
+                        <p class="price">#2,000</p>
+                        <p>Small Bottle Smirnoff Ice </p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="liqueur">
+                    <img src="smirnoffblack.jpeg" alt="Liqueur">
+                    <div>
+                        <h3>Smirnoff Ice Double Black</h3>
+                        <p class="price">#2,000</p>
+                        <p>Smirnoff ice double black </p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="shakes">
+            <h2>SHAKES</h2>
+            <div class="menu-item"  data-category="shakes">
+                <img src="vanilla.png" alt="SHAKES">
+                <div>
+                    <h3>Vanilla Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="aramulamilkshake.jpeg" alt="SHAKES">
+                <div>
+                    <h3>Aramula Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="almond.jpeg" alt=" BEER ">
+                <div>
+                    <h3>Almond Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="avocado.jpeg" alt="shakes ">
+                <div>
+                    <h3>Avocado Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="banana.jpeg" alt="shakes ">
+                <div>
+                    <h3>Banana Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="Beetroot.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Beetroot Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="blueberry.jpeg" alt="shakes ">
+                <div>
+                    <h3>Blue Berry Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="caramel.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Caramel Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="chocolate.jpeg" alt="shakes ">
+                <div>
+                    <h3>Chocolate Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="coconut.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Coconut Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="kiwi.jpeg" alt="shakes ">
+                <div>
+                    <h3>Kiwi Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="lemon.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Lemon Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="mango.jpeg" alt="shakes ">
+                <div>
+                    <h3>Mango Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="orange.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Orange Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="oreo.jpeg" alt="shakes ">
+                <div>
+                    <h3>Oreo Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="peach.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Peach Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="pineapple.jpeg" alt="shakes ">
+                <div>
+                    <h3>Pineapple Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="poshion.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Poshion Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="strawberry.jpeg" alt="shakes ">
+                <div>
+                    <h3>Strawberry Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="stuff.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Stuff Date Milkshake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="shakes">
+                <img src="shamrock.jpeg" alt=" SHAKES ">
+                <div>
+                    <h3>Shamrock Shake</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Shakes</p>
+                </div>
+            </div>
+
+        </section>
+        
+
+        <section class="menu-section"   data-category="fresh juice">
+            <h2>FRESH JUICE</h2>
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange1.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Pineapple</h3>
+                        <p class="price">₦7,280</p>
+                        <p>A Portion of Orange and Pineapple Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange1.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Pineapple</h3>
+                        <p class="price">₦5,200</p>
+                        <p>A Glass of Orange and Pineapple Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange2.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Watermelon</h3>
+                        <p class="price">₦7,280</p>
+                        <p>A Portion of Orange and Watermelon Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange2.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Watermelon</h3>
+                        <p class="price">₦5,200</p>
+                        <p>A Glass of Orange and Watermelon Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange3.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Watermelon and </h3>
+                        <p class="price">₦7,280</p>
+                        <p>A Portion of Orange, Watermelon and  Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="orange3.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Orange and Watermelon and</h3>
+                        <p class="price">₦5,200</p>
+                        <p>A Glass of Orange, Watermelon and  Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="watermelon1.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Watermelon and Pineapple</h3>
+                        <p class="price">₦7,280</p>
+                        <p>A Portion of Watermelon and Pineapple Fresh Juice</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="fresh juice">
+                    <img src="watermelon1.jpeg" alt="JUICE">
+                    <div>
+                        <h3>Watermelon and Pineapple</h3>
+                        <p class="price">₦5,200</p>
+                        <p>A Glass of Watermelon and Pineapple Fresh Juice</p>
+                    </div>
+                </div>
+        </section>
+        
+
+        <section class="menu-section"   data-category="cocktails">
+            <h2>COCKTAILS</h2>
+            <div class="menu-item"  data-category="cocktails">
+                <img src="b52.jpeg" alt="COCKTAILS">
+                <div>
+                    <h3>B-52 Cocktail</h3>
+                    <p class="price">₦3,000</p>
+                    <p>A Glass B-52 Cocktail</p>
+                </div>
+            </div>
+            <div class="menu-item"  data-category="cocktails">
+                <img src="african.jpeg" alt="COCKTAILS">
+                <div>
+                    <h3>African Spirit</h3>
+                    <p class="price">₦2,500</p>
+                    <p>Glass</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="alcholic.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Alcholic Chapman</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A glass of Alcholic Champman</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="aramulapinacolada.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Aramula Pinacolada</h3>
+                    <p class="price">₦9,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="aramulaspringboohie.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Aramula Springboohie</h3>
+                    <p class="price">₦2,500</p>
+                    <p>Cocktails</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="bibiclefa.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Biciclefla</h3>
+                    <p class="price">₦8,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="blood.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Blood Ritual</h3>
+                    <p class="price">₦9,500</p>
+                    <p>Cocktails</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="bluekamikazi.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Blue Kamikazi</h3>
+                    <p class="price">₦2,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="daiquiri.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Claasic Daiquiri</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Cocktails</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="gunsR.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Guns & Roses</h3>
+                    <p class="price">₦9,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="paradiseR.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Paradise Rainbow</h3>
+                    <p class="price">₦8,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="magarita.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Classic Magarita</h3>
+                    <p class="price">₦8,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="martini.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Claasic Martini</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Cocktails</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="cosmopolitan.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Cosmopolitan</h3>
+                    <p class="price">₦8,500</p>
+                    <p> Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="espresso.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Expresso Martini</h3>
+                    <p class="price">₦8,500</p>
+                    <p>Cocktails</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="frozendaquiri.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Frozen Daquiri</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Frozen Daquiri Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="frozenmargarita.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Frozen Magarita</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Frozen Margarita</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="garibaldi.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Garibaldi</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Garibaldi Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="ginbramble.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Gin Bramble</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Gin Bramble Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="greenF.jpg" alt=" COCKTAILS">
+                <div>
+                    <h3>Green Fountain</h3>
+                    <p class="price">₦9,500</p>
+                    <p>A Glass of Green Fountain Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="virginM.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Virrgin Mogito</h3>
+                    <p class="price">₦6,500</p>
+                    <p>A Glass of Virgin Mogito Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="jasmine.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Jasmine</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Jasmine Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="kamikaze.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Kamikazi</h3>
+                    <p class="price">₦2,500</p>
+                    <p>A Glass of Kamikazi Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="longI.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Long Island</h3>
+                    <p class="price">₦9,500</p>
+                    <p>A Glass of Long Island Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="martiniB.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Martini Bianco</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Martini Bianco Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="milanoT.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Milano Torino</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Milano Torino Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="mojito.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3> Mogito</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of  Mogito Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="mosquitoB.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Mosquito Bite</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Mosquito Bite Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="oldF.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Old Fashion</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Old Fashion Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="negroni.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Negroni</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Negroni Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="pinaC.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Pina Colada</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Pina Colado Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="pineapleM.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Pineapple Magarita</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Pineapple MAgarita Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="pinkE.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Pink Elephant</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Pink Elephant Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="pinkM.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Pink Martini</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Pink Martini Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="pornstarM.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Pom Star Martini</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Pom Star Martini Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="rumC.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Rum collins</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Rum Collins Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="saltyD.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Salty Dog</h3>
+                    <p class="price">₦7,800</p>
+                    <p>A Portion of salty Dog Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="screwD.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Screw Driver</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Screw Driver Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="sexOTB.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Sex on the Beach</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Sex on the beach Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="sexOTDw.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Sex on the Drive Way</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Sex on the drive way Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="sexOTG.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Sex on the Grass</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of sex on the Glass Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="strawberryDC.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Strawberry Daiquiri [Classic]</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Strawberry Daiquiri Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="srawberryDF.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Strawberry Daiquiri [Frozen]</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Frozen Strawbeery Daiquiri Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="tequilaS.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Tequilla Sunrise</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Tequilla Sunrise Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="tomC.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Tom Collins</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Tom  Collins Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="whiteR.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>White Russian</h3>
+                    <p class="price">₦6,500</p>
+                    <p>A Glass of White Russian Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="woowoo.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Woo-Woo</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Woo-Woo Cocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="cocktails">
+                <img src="wetP.jpeg" alt=" COCKTAILS">
+                <div>
+                    <h3>Woo-Woo</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Wet Pussy Cocktail</p>
+                </div>
+            </div>
+
+
+        </section>
+
+
+        <section class="menu-section"   data-category="mocktails">
+            <h2>MOCKTAILS</h2>
+            <div class="menu-item"  data-category="mocktails">
+                <img src="chapman.jpeg" alt="MOCKTAILS">
+                <div>
+                    <h3>Chapman</h3>
+                    <p class="price">₦6,500</p>
+                    <p>A glass of the mocktail</p>
+                    </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="apple1.jpeg" alt="MOCKTAILS">
+                <div>
+                    <h3>Apple & Betroot</h3>
+                    <p class="price">₦7,280</p>
+                    <p>A portion of the mocktail</p>
+                    </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="apple1.jpeg" alt="MOCKTAILS">
+                <div>
+                    <h3>Apple & Betroot </h3>
+                    <p class="price">₦5,200</p>
+                    <p>A glass of the mocktail</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="bluelagoon.jpeg" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Blue Lagoon</h3>
+                    <p class="price">₦8,500</p>
+                    <p>A Glass of Blue Lagoon</p>
+                </div>
+            </div>
+
+            
+            <div class="menu-item"  data-category="mocktails">
+                <img src="honeyS.webp" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Honey Sunrise</h3>
+                    <p class="price">₦5,200</p>
+                    <p>A Glass of Honey Sunrise </p>
+                </div>
+            </div>
+
+            
+            <div class="menu-item"  data-category="mocktails">
+                <img src="honeyL.jpg" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Honey Lemonade</h3>
+                    <p class="price">₦4,160</p>
+                    <p>A Glass of Honey Lemonade</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="greenF.jpg" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Green Fountain [non alcholic]</h3>
+                    <p class="price">₦7,000</p>
+                    <p>A Glass of Green Fountain</p>
+                </div>
+            </div>
+
+            
+            <div class="menu-item"  data-category="mocktails">
+                <img src="virginC.jpg" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Virgin Colada</h3>
+                    <p class="price">₦7,000</p>
+                    <p>A Glass of Virgin Colada</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="strawberryE.webp" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Strawberry Extreme</h3>
+                    <p class="price">₦5,200</p>
+                    <p>A Glass of Strawberry Extreme</p>
+                </div>
+            </div>
+
+            <div class="menu-item"  data-category="mocktails">
+                <img src="tropicalP.jpeg" alt=" MOCKTAILS ">
+                <div>
+                    <h3>Tropical Punch</h3>
+                    <p class="price">₦5,200</p>
+                    <p>A Glass of Tropical Punch</p>
+                </div>
+            </div>
+
+
+        </section>
+
+
+        <section class="menu-section"   data-category="smoothies">
+            <h2>SMOOTHIES</h2>
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="smoothies.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Smoothies</h3>
+                        <p class="price">₦8,500</p>
+                        <p>A Glass of Smoothie</p>
+                    </div>
+                </div>
+
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="green1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Green Smoothies</h3>
+                        <p class="price">₦8,320</p>
+                        <p>A Glass of Smoothie</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="pawpaw1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Paw-Paw, Banana Smoothies</h3>
+                        <p class="price">₦8,320</p>
+                        <p>A Glass of Smoothie</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="pawpaw1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Paw-Paw, Banana Smoothies</h3>
+                        <p class="price">₦6,240</p>
+                        <p>A Portion of Smoothie</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="pineapple1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Pineapple, Banana, Avocado Smoothies</h3>
+                        <p class="price">₦8,320</p>
+                        <p>A Glass of Smoothie</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="pineapple1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Pineapple, Banana, Avocado Smoothies</h3>
+                        <p class="price">₦6,240</p>
+                        <p>A Portion of Smoothie</p>
+                    </div>
+                </div>
+    
+                <div class="menu-item"  data-category="smoothies">
+                    <img src="strawberry1.jpeg" alt="SMOOTHIES">
+                    <div>
+                        <h3>Strawberry, Banana Smoothies</h3>
+                        <p class="price">₦6,500</p>
+                        <p>A Glass of Smoothie</p>
+                    </div>
+                </div>
+
+        </section>
+
+
+        <section class="menu-section"   data-category="shisha">
+            <h2>SHISHA</h2>
+                <div class="menu-item"  data-category="shisha">
+                    <img src="shisha.jpeg" alt="shisha">
+                    <div>
+                        <h3>shisha</h3>
+                        <p class="price">₦7,000</p>
+                        <p></p>
+                    </div>
+                </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
